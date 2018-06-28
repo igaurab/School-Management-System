@@ -1,0 +1,144 @@
+*
+{
+	font-family: verdana;
+	margin: 2px;
+	padding: 0px;
+	text-align: justify;
+}
+*::after
+{
+	content: " "attr(afr);
+}
+*::before
+{
+	content: attr(bfr)" ";
+}
+a
+{
+	text-decoration: none;
+	color: inherit;
+}
+body
+{
+	background: #ded;
+}
+.frame
+{
+	width: 90%;
+	height: 90vh;
+	margin: 0 auto;
+}
+
+.frame iframe
+{
+	width: 95%;
+	height: 95%;
+	padding: 10px;
+}
+
+
+.navBar ul li
+{
+	text-align: center;
+	display: inline-block;
+	margin: 0 10px;
+	padding: 0 5px;
+	border: 2px solid;
+}
+
+.navBar ul
+{
+	text-align: center;
+	list-style: none;
+}
+
+
+button , input[type="button"], input[type="submit"]
+{
+	border-radius: 5px;
+	outline: none;
+	padding: 2px;
+} 
+
+input[type="text"], input[type="number"], input[type="password"], input[type="phone"], input[type="email"]
+{
+	outline: none;
+	padding: 2px 10px 2px 5px; 		  
+	border-radius: 5px;
+	border :1px solid #aaa;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="phone"]:focus, input[type="email"]:focus
+{
+	border: 1px solid hotpink;
+}
+.imgContent
+{
+	display: inline-block;
+	width: 25%;
+	height: 200px;
+	text-align: center;
+}
+
+.imgContent img
+{
+	width: 100%;
+	height: 100%;
+}
+
+.imgDesc img
+{
+	float:left;
+	margin: 0px 2px 0px 5px;
+}
+
+.form
+{
+	display: table;
+}
+.form p
+{
+	display: table-row;
+}
+.form label, .form input,.form select
+{
+	display: table-cell;
+	margin: 4px;
+}
+.err
+{
+	color: rgb(250,20,20);
+}
+.good
+{
+	color: rgb(20,200,20);
+}
+.footContent
+{
+	margin: 0px 5px;
+	border: 1px solid #eee;
+	display: inline-block;
+	padding:  25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

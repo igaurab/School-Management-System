@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		.fields
+		{
+			margin:20px;
+			text-align: center;
+			list-style: none;
+			border-radius: 10px;
+		}
+		.fields li
+		{
+			margin: 10px;
+			border: 5px solid #333;
+			padding: 10px;
+			text-align: center;
+			display: inline-block;
+			border-radius:10px;
+		}
+		.fields li:hover
+		{
+			background: aqua;
+			cursor: pointer;
+		}
+		form
+		{
+			width:50%;
+			margin:10px auto;
+			text-align: center;
+			box-shadow: 0px 0px 50px brown;
+			border:3px solid brown;
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Choose your Field</h1>
+<ul class="fields">
+	<li onclick="createDocumentForm()">Reception</li>
+	<li onclick="createAccountForm()">Account</li>
+	<li onclick="createLibraryForm()">Library</li>
+	<li onclick="createGurdianForm()">Gurdians</li>
+	<li onclick="createTeacherForm()">Teachers</li>
+	<li onclick="createAdminForm()">Administrator</li>
+</ul>
+<div class="formHolder">
+</div>
+
+<script type="text/javascript" src="javascript.js"></script>
+</body>
+</html>

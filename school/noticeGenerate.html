@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		ul li
+		{
+			display: inline-block;
+			margin:10px 15px;
+			border: 2px solid #ddd;
+		}
+		ul
+		{
+			margin:0 auto;
+			width: 60%;
+			text-align: center;
+		}
+		ul li:hover
+		{
+			cursor: pointer;
+			background: #ff7777;
+		}
+		#holder
+		{
+			width: 50%;
+			margin: 0 auto;
+			padding: 10px; 
+			border: 2px solid #b6dbe2;
+		}
+	</style>
+</head>
+<body>
+<h1>Generate Notice</h1>
+<ul>
+	<li id="holiday">
+		Holiday
+		<select onchange="createHolidayForm(this)">
+			<option>National Days</option>
+			<option>Festivals</option>
+			<option>Vaccation</option>
+			<option>Unfortunate Holidays</option>
+		</select>
+	</li>
+	<li id="result">Result
+	<select onchange="createResultForm(this)">
+		<option>First Unit Test</option>
+		<option>Second Unit Test</option>
+		<option>Third Unit Test</option>
+		<option">First Term</option>
+		<option">Second Term</option>
+		<option">Final Term</option>
+	</select>
+
+	</li>
+	<li id="exam">
+	Exam
+	<select onchange="createExamForm(this)">
+		<option>First Unit Test</option>
+		<option>Second Unit Test</option>
+		<option>Third Unit Test</option>
+		<option>First Term</option>
+		<option>Second Term</option>
+		<option>Final Term</option>
+	</select>
+	</li>
+	<li onclick="createMeetingForm()">Meetings</li>
+	<li onclick="createProgramForm()">Program</li>
+</ul>
+
+
+<p id="holder">
+
+</p>
+<script type="text/javascript">
+var holder = document.getElementById('holder');
+var submit;
+function createHolidayForm(value)
+{
+	var newForm = "<p class='form'><p><label for='date'>Date :</label><input type='date' id='date'></p> ";
+		if (value.value == 'Unfortunate Holidays')
+				newForm +="<p><label for='res'>Reason :</label><input type='text' id='res'></p>";
+		else
+			newForm +="<p><label for='name'>Name :</label><input type='text' id='name'></p>";
+			newForm +="<p><label for='from'>Range :</label><input type='date' id='from' title='from'><input type='date' id='to' title='to'></p><input type='submit' id='sub_btn' name="+value.parentNode.id+"> </p>";
+	holder.innerHTML = newForm;
+	submit = document.getElementById('sub_btn')
+	submit.addEventListener('click',generator);
+}
+function createExamForm(value)
+{
+	var newForm ="<p><label for='from'>Range :</label><input type='date' id='from' title='from'><input type='date' id='to' title='to'></p><input type='submit' id='sub_btn' name = "+value.parentNode.id+"> </p>";
+	holder.innerHTML = newForm;
+	submit = document.getElementById('sub_btn')
+	submit.addEventListener('click',generator);
+}
+
+function createResultForm(value)
+{
+	var newForm ="<p class='form'><p><label for='date'>Date :</label><input type='date' id='date'></p><p><label for='time'>Time :</label><input type='time'></p>"+
+	"<p><input type='submit' id='sub_btn' name = "+value.parentNode.id+"> </p></p>";
+	holder.innerHTML = newForm;
+	submit = document.getElementById('sub_btn')
+	submit.addEventListener('click',generator);
+}
+
+function createMeetingForm()
+{
+	var newForm ="<p class='form'><p><label for='date'>Date :</label><input type='date' id='date'></p><p><label for='time'>Time :</label><input type='time'></p>"+
+	"<p><label for='About'>About :</label><input type='text' id='About'></p><p><input type='submit' id='sub_btn' name ='meeting' > </p>   </p>";
+	holder.innerHTML = newForm;	
+	submit = document.getElementById('sub_btn')
+	submit.addEventListener('click',generator);
+}
+function createProgramForm()
+{
+	var newForm ="<p class='form'><p><label for='date'>Date :</label><input type='date' id='date'></p><p><label for='time'>Time :</label><input type='time'></p>"+
+	"<p><label for='About'>About :</label><input type='text' id='About'></p><p><input type='submit' id='sub_btn' name ='Program' > </p>   </p>";
+	holder.innerHTML = newForm;	
+	submit = document.getElementById('sub_btn')
+	submit.addEventListener('click',generator);
+}
+
+function generator()
+{
+		var from = document.getElementById('from');
+		var to = document.getElementById('to');
+		var date = document.getElementById('date');
+		var name = document.getElementById('name');
+		var string = "It is to notify you all that ";
+		var critera = document.getElementById(submit.name).children[0];
+	switch (submit.name)
+	{
+		case 'holiday':
+			if (!(date.value=='' || (from.value == '' && to.value == '') || name.value == ''))
+				alert('Cannot generate such notice please provide proper name and (date or the range) for the holiday ');
+			else
+			{
+				string += "the school remains closed "
+				if (!(date == null || date.value == ''))
+					string += "on "+date.value;
+				else
+					string += "from "+from.value+" to "+to.value;
+				if (critera.value == 'Vaccation')
+					string +=  " as "+name.value+" vaccation";
+				else if (critera.value == 'National Days')
+					string += " as it is "+name.value;
+				else if (critera.value == 'Festivals')
+					string += " as it is "+name.value+". School family wises a great greetings to you all for "+name.value+" and also hope you will enjoy the festival very well. "
+				else if (critera.value == 'Unfortunate Holidays')
+				{
+					var reason = document.getElementById('res')
+					string += " in order to consider the fat that "+reason.value+"."
+				}
+
+			}
+	}
+
+	var text = document.createElement('textarea')
+	text.setAttribute('cols','50')
+	text.setAttribute('rows','10')
+	text.value = string;
+	holder.appendChild(text);
+
+}
+</script>
+</body>
+</html>
